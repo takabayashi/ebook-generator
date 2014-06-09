@@ -1,0 +1,40 @@
+<%- model_class = Book -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+  <dd><%= @book.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:book_template) %>:</strong></dt>
+  <dd><%= @book.book_template %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:total_pages) %>:</strong></dt>
+  <dd><%= @book.total_pages %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:pdf_version) %>:</strong></dt>
+  <dd><%= @book.pdf_version %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:file_path) %>:</strong></dt>
+  <dd><%= @book.file_path %></dd>
+  
+  <% unless @book.attachment_path.empty? %>
+    <dt><strong><%= model_class.human_attribute_name(:attachment_path) %>:</strong></dt>
+    <dd><%= @book.attachment_path %></dd>
+  <% end %>
+  
+  <dt><strong><%= model_class.human_attribute_name(:metadata) %>:</strong></dt>
+  <dd><%= @book.metadata %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:images_path) %>:</strong></dt>
+  <dd><%= @book.images_path %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              books_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_book_path(@book), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              book_path(@book),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+  <%= link_to 'Convert', "/convert/#{@book.id}", :class => 'btn btn-primary' %>
+</div>

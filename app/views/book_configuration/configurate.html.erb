@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  	<link rel="stylesheet" href="/livro-template/style/simples.css" type="text/css" />
+  	<link rel="stylesheet" href="/livro-template/style/controles.css" type="text/css" />
+  	<link rel="stylesheet" href="/livro-template/style/modal.css" type="text/css" />
+  	<link rel="stylesheet" href="/livro-template/style/configurator.css" type="text/css" />
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	<title>Livro</title>
+  </head>
+  <body>
+  	<div id="divPrincipal" class="center">
+  		<div id="divControles">
+  			<div id="capa"  class="controleHome">
+  			</div>
+  			
+  			<div id="back"  class="controleLeft">
+  			</div>
+  			
+  			<div id="next"  class="controleRigth">
+  			</div>
+  			
+  			<div id="zoomIn"  class="controleZoomIn">
+  			</div>
+  			
+  			<div id="zoomOut"  class="controleZoomOut">
+  			</div>
+  			
+  			<div id="zoomFit"  class="controleZoomFit">
+  			</div>
+  			
+  			<div id="paginaAtual"  class="controlePaginaAtual">
+  				<input id="numPagina" class="controleNumPaginaAtual"/>
+  			</div>
+  			
+  			<div id="qtdPaginas"  class="controleQtdPaginas">
+  			</div>
+  			
+  			<div id="lm" class="controleLm">
+  			</div>
+  			
+  			<div id="mp" class="controleMp">
+  			</div>
+  		</div>
+  		
+		<div id="divControleOED">
+			<div id="fechar" class="controleAbreObEduc">
+			</div>
+			
+			<div id="listaOED">
+			</div>
+		</div>
+
+		<!--<div id="widgetConfigPanelDiv">
+			<%= render 'widget_selection' %>
+		</div>-->
+
+		<div id="widgetConfigDiv">
+		<h3>Teste</h3>
+		</div>
+
+
+  		<div id="divConteudo">
+	    	<div id="divOED">
+	    		<a href="#divModalDialog" onclick="loadIFrame();" ><img id="iconeOED" src="/livro-template/images/link.png" style="display:none"/></a>
+			</div>
+			
+	    	<canvas id="canvasPagina" class='enableWidgetConfiguration'>
+	     	    Browser não suporta Canvas!!!
+	     	</canvas>
+	     	
+	     	<div id="divSumario" class="divSumario">
+					
+			</div>
+     	</div>
+    </div>
+    
+	<div id="divModalDialog" class="modalDialog" >
+		<div id="divContainer">
+			<a id='modalCloseLink' href="#close" title="Close" class="close">X</a>
+			<iframe src="" name="iframe_a" id="iframe_a" class="center" tabindex="0">Browser não suporta iFrames!!!</iframe>
+		</div>
+	</div>
+	
+	<script src="/livro-template/js/modernizr-latest.js"></script>
+	<script>
+		(function(){
+			//configuracoes gerais
+			window.qtdPaginas = <%=@book.total_pages%>;
+			window.numPaginaCapa = 0;
+			window.imgDefaultWidth = 1480/2; //tamanho da imagem
+			window.imgDefaultHeight = 2008/2; //tamanho da imagem
+			window.tituloPrincipal = '<%=@book.title%>';
+			window.imagesPath = '/books/<%=@book.id%>/images'
+
+
+			//configuracoes para anexos
+			window.temAnexo = false;
+			window.qtdPaginasAnexo = 81;
+			window.numPaginaCapaAnexo = 1;
+
+		})();
+	</script>
+	
+	<script src="/livro-template/js/simples.js"></script>
+	<script src="/livro-template/js/widgets.js"></script>
+	<script src="/livro-template/js/sumario.js"></script>
+  </body>
+</html>

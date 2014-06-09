@@ -1,0 +1,29 @@
+<%= form_for @widget, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :book_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :book_id, Book.all, :id, :title, prompt: true, :class => 'select_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label 'Zip file', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :zip, :class => 'text_field', accept: 'application/zip' %>
+    </div>
+  </div>
+
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                widgets_path, :class => 'btn' %>
+  </div>
+<% end %>

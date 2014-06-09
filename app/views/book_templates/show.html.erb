@@ -1,0 +1,25 @@
+<%- model_class = BookTemplate -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+  <dd><%= @book_template.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:book_qt) %>:</strong></dt>
+  <dd><%= @book_template.book_qt.to_i %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:file_path) %>:</strong></dt>
+  <dd><%= @book_template.file_path %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              book_templates_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_book_template_path(@book_template), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              book_template_path(@book_template),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

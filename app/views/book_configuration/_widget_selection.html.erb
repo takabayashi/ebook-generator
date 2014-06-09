@@ -1,0 +1,7 @@
+<div class="field">
+	<label>Widgets disponíveis</label>
+	<select id='widgetSelected'><%= options_from_collection_for_select(@book.widgets, :id, :title) %></select>
+</div>
+
+<a class='saveWidgetConfiguration'>Salvar</a>
+<a class='closeWidgetConfiguration'>Close</a>

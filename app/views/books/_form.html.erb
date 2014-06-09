@@ -1,0 +1,36 @@
+<%= form_for @book, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :book_template, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :book_template, BookTemplate.all, :title, :title, prompt: true, :class => 'select_field' %>
+      <%= link_to 'add', new_book_path, :class => 'btn btn-add' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :principal, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :principal, :class => 'btn-file', accept: 'application/pdf' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :attachment, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :attachment, :class => 'btn-file', accept: 'application/pdf' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                books_path, :class => 'btn' %>
+  </div>
+<% end %>

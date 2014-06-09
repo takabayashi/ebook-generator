@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  full_path: MyString
+  book_id: 
+
+two:
+  title: MyString
+  full_path: MyString
+  book_id: 

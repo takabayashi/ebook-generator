@@ -1,0 +1,2 @@
+module BookConfigurationHelper
+end
