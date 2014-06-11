@@ -1,0 +1,7 @@
+template_config : {
+	template_name: 'Livro Do Aluno',
+	book_images_path: 'livros/1',
+	atachement_images_path: 'livros/2',
+	configurator_script_path: 'js/',
+	widgets_path: 'widgets'
+}

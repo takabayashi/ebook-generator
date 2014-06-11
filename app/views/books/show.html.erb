@@ -28,12 +28,14 @@
     <dd><%= @book.metadata %></dd>
   <% end %>
 
-  <dt><strong><%= model_class.human_attribute_name(:images_path) %>:</strong></dt>
-  <dd><%= @book.images_path %></dd>
+  <% unless @book.attachment_path.empty? %>
+    <dt><strong><%= model_class.human_attribute_name(:images_path) %>:</strong></dt>
+    <dd><%= @book.images_path %></dd>
+  <% end %>
 
   <% unless @book.temp_link == nil || @book.temp_link.empty? %>
     <dt><strong><%= model_class.human_attribute_name(:temp_link) %>:</strong></dt>
-    <dd><%= @book.temp_link %></dd>
+    <dd><%= link_to 'download link', @book.temp_link %></dd>
   <% end %>
 </dl>
 

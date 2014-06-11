@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611111519) do
+ActiveRecord::Schema.define(version: 20140611164307) do
 
   create_table "book_templates", force: true do |t|
     t.string   "title"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20140611111519) do
     t.integer  "default_width"
     t.integer  "default_height"
     t.string   "temp_link"
+    t.text     "configurations"
   end
 
   create_table "publishers", force: true do |t|
