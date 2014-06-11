@@ -31,7 +31,7 @@
   <dt><strong><%= model_class.human_attribute_name(:images_path) %>:</strong></dt>
   <dd><%= @book.images_path %></dd>
 
-  <% unless @book.temp_link.empty? %>
+  <% unless @book.temp_link == nil || @book.temp_link.empty? %>
     <dt><strong><%= model_class.human_attribute_name(:temp_link) %>:</strong></dt>
     <dd><%= @book.temp_link %></dd>
   <% end %>
