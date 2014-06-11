@@ -22,8 +22,9 @@ class ApplicationController < ActionController::Base
 	end
 
 	def s3_upload (object_key, file_path)
-		puts S3_CONFIG
+
 		buket_name = S3_CONFIG["buket_name"]
+		expiration_date = 1.day.from_now
 
 		s3 = AWS::S3.new(
 			:access_key_id => S3_CONFIG["access_key_id"],
@@ -31,10 +32,17 @@ class ApplicationController < ActionController::Base
   			)
 
 		bucket = s3.buckets[buket_name]
-		bucket = s3.buckets.create(buket_name) unless bucket.exists?
+		
+		if !bucket.exists?
+			bucket = s3.buckets.create(buket_name)
+			
+			bucket.lifecycle_configuration.update do
+			  add_rule('book-', :expiration_time => expiration_date)
+			end
+		end 
 
-		obj = bucket.objects.create(object_key, Pathname.new(file_path))
+		obj = bucket.objects.create("book-#{object_key}", Pathname.new(file_path))
 
-		obj.url_for(:get, { :expires => 20.minutes.from_now, :secure => true }).to_s
+		obj.url_for(:get, { :expires => expiration_date, :secure => true }).to_s
 	end   
 end
