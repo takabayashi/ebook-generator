@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/configurate/:id', to: 'book_configuration#configurate'
   get '/convert/:id', to: 'book_configuration#convert'
   get '/build/:id', to: 'book_configuration#build'
+  get '/upload/:id', to: 'book_configuration#upload'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

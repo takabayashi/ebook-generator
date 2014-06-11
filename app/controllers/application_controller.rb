@@ -20,5 +20,21 @@ class ApplicationController < ActionController::Base
 		    end
 		end
 	end
-    
+
+	def s3_upload (object_key, file_path)
+		puts S3_CONFIG
+		buket_name = S3_CONFIG["buket_name"]
+
+		s3 = AWS::S3.new(
+			:access_key_id => S3_CONFIG["access_key_id"],
+  			:secret_access_key => S3_CONFIG["secret_access_key"]
+  			)
+
+		bucket = s3.buckets[buket_name]
+		bucket = s3.buckets.create(buket_name) unless bucket.exists?
+
+		obj = bucket.objects.create(object_key, Pathname.new(file_path))
+
+		obj.url_for(:get, { :expires => 20.minutes.from_now, :secure => true }).to_s
+	end   
 end

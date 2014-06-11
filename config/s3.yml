@@ -1,0 +1,14 @@
+development:
+  access_key_id: AKIAIULYPH7PYMOCNAXA
+  secret_access_key: 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
+  buket_name: ebook-generator-development
+
+test:
+  access_key_id: AKIAIULYPH7PYMOCNAXA
+  secret_access_key: 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
+  buket_name: ebook-generator-test
+
+production:
+  access_key_id: AKIAIULYPH7PYMOCNAXA
+  secret_access_key: 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
+  buket_name: ebook-generator-production

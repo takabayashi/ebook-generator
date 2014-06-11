@@ -12,6 +12,9 @@
   <dd><%= @book.total_pages %></dd>
   <dt><strong><%= model_class.human_attribute_name(:pdf_version) %>:</strong></dt>
   <dd><%= @book.pdf_version %></dd>
+  
+  <dt><strong><%= model_class.human_attribute_name(:resolution) %>:</strong></dt>
+  <dd><%= @book.default_width %> x <%= @book.default_height %></dd>
   <dt><strong><%= model_class.human_attribute_name(:file_path) %>:</strong></dt>
   <dd><%= @book.file_path %></dd>
   
@@ -20,10 +23,18 @@
     <dd><%= @book.attachment_path %></dd>
   <% end %>
   
-  <dt><strong><%= model_class.human_attribute_name(:metadata) %>:</strong></dt>
-  <dd><%= @book.metadata %></dd>
+  <% unless @book.attachment_path.empty? %>
+    <dt><strong><%= model_class.human_attribute_name(:metadata) %>:</strong></dt>
+    <dd><%= @book.metadata %></dd>
+  <% end %>
+
   <dt><strong><%= model_class.human_attribute_name(:images_path) %>:</strong></dt>
   <dd><%= @book.images_path %></dd>
+
+  <% unless @book.temp_link.empty? %>
+    <dt><strong><%= model_class.human_attribute_name(:temp_link) %>:</strong></dt>
+    <dd><%= @book.temp_link %></dd>
+  <% end %>
 </dl>
 
 <div class="form-actions">

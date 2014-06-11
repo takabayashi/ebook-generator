@@ -38,8 +38,6 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'pry'
-
 gem 'rmagick', '~> 2.13.2'
 gem 'pdf-reader'
 gem 'ruby-progressbar'
@@ -49,4 +47,6 @@ gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'kaminari'
 gem 'devise'
+gem 'pace-rails'
+gem 'aws-sdk', '~> 1.0'
 

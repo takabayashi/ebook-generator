@@ -15,6 +15,8 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+//= require pace/pace
+
 var app = app || {
 	books : [],
 
@@ -49,8 +51,6 @@ var app = app || {
 		return book;
 	}
 };
-
-
 
 ///teste
 /**app.addBook(1);

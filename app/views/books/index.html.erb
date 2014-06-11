@@ -23,8 +23,12 @@
         <td><%=l book.created_at.to_date %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_book_path(book), :class => 'btn btn-mini' %>
-          <%= link_to 'Config', "/configurate/#{book.id}", :class => 'btn btn-mini' %>
+          <%= link_to 'Config',
+            "/configurate/#{book.id}",
+            :method => :get,
+            :class => 'btn btn-mini' %>
           <%= link_to 'Build', "/build/#{book.id}", :class => 'btn btn-mini' %>
+          <%= link_to 'Build & Upload', "/upload/#{book.id}", :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
             book_path(book),
             :method => :delete,

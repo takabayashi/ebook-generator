@@ -48,7 +48,7 @@ var configurator = configurator || {
 			configurator.ui.hideWidgetConfigDiv();
 		});
 
-		$( "#widgetConfigDiv" ).resizable();
+		
 	}
 };
 
