@@ -5,7 +5,7 @@ body {
 }
 
 #divPrincipal {
-	z-index: 100;
+	z-index: 0;
 }
 
 #canvasPagina {

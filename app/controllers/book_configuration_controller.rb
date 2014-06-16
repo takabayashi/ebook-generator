@@ -69,6 +69,11 @@ class BookConfigurationController < ApplicationController
 		redirect_to book_path
 	end
 
+	def save
+		binding.pry
+		@book = Book.find(params[:book_id])
+	end
+
 
 	private
 	def build_process book

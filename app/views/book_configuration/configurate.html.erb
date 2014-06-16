@@ -4,12 +4,33 @@
   	<link rel="stylesheet" href="/livro-template/style/simples.css" type="text/css" />
   	<link rel="stylesheet" href="/livro-template/style/controles.css" type="text/css" />
   	<link rel="stylesheet" href="/livro-template/style/modal.css" type="text/css" />
-  	<link rel="stylesheet" href="/livro-template/style/configurator.css" type="text/css" />
+  	<%= stylesheet_link_tag "configurator", :media => "all" %>
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   	<title>Livro</title>
   </head>
   <body>
   	<div id="divPrincipal" class="center">
+      <div id="widgetProperties">
+        <fieldset>
+          <input type="radio" name="widgetType" value="1" checked>Sumario
+          <div class="widgetPropertiesFields-type-1">
+            <span><input type='number' value='0' id='pageNumber'></span>
+          </div>
+        </fieldset>    
+        <fieldset>
+          <input type="radio" name="widgetType" value="2">Widget
+          <div class="widgetPropertiesFields-type-2">
+            <span>
+              <select id='widgetId'>
+                <option value='widget001'>Widget 001</option>
+                <option value='widget002'>Widget 002</option>
+                <option value='widget003'>Widget 003</option>
+              </select>
+            </span>
+          </div>
+        </fieldset>
+      </div>
+
   		<div id="divControles">
   			<div id="capa"  class="controleHome">
   			</div>
@@ -41,30 +62,37 @@
   			
   			<div id="mp" class="controleMp">
   			</div>
+
+        <div class="controleSave">
+          <a id='saveConfig'>SAVE</a>
+        </div>
   		</div>
   		
-		<div id="divControleOED">
-			<div id="fechar" class="controleAbreObEduc">
-			</div>
-			
-			<div id="listaOED">
-			</div>
-		</div>
+  		<div id="divControleOED">
+  			<div id="fechar" class="controleAbreObEduc">
+  			</div>
+  			
+  			<div id="listaOED">
+  			</div>
+  		</div>
+  
+      <div id="divWidgetIcon" draggable="true" ondragstart="return configurator.dragStart(event)" onkeypress="configurator.pressKeyCode(this.id)" tabindex="-1"></div>
 
-  		<div id="divConteudo">
-	    	<div id="divOED">
-	    		<a href="#divModalDialog" onclick="loadIFrame();" ><img id="iconeOED" src="/livro-template/images/link.png" style="display:none"/></a>
-			</div>
+      <div id="divAreaCanvas" ondragenter="return configurator.dragEnter(event)" ondrop="return configurator.dragDrop(event)" ondragover="return configurator.dragOver(event)" onclick="configurator.getPositionWidgetIcon()"></div>
+
+    	<div id="divConteudo">
+  	    <div id="divOED">
+  	     <a href="#divModalDialog" onclick="loadIFrame();" ><img id="iconeOED" src="/livro-template/images/link.png" style="display:none"/></a>
+  			</div>
 			
 	    	<canvas id="canvasPagina" class='enableWidgetConfiguration'>
 	     	    Browser não suporta Canvas!!!
 	     	</canvas>
 	     	
 	     	<div id="divSumario" class="divSumario">
-					
 			</div>
-     	</div>
     </div>
+  </div>
     
 	<div id="divModalDialog" class="modalDialog" >
 		<div id="divContainer">
@@ -74,6 +102,9 @@
 	</div>
 	
 	<script src="/livro-template/js/modernizr-latest.js"></script>
+  <%= javascript_include_tag "configurator" %>
+  <%= javascript_include_tag "book_templates" %>
+
 	<script>
 		(function(){
 			//configuracoes gerais
@@ -90,9 +121,14 @@
 			window.numPaginaCapaAnexo = 1;
 		})();
 	</script>
-	
-	<script src="/livro-template/js/simples.js"></script>
+  	
+  <script src="/livro-template/js/simples.js"></script>
 	<script src="/livro-template/js/widgets.js"></script>
 	<script src="/livro-template/js/sumario.js"></script>
+
   </body>
+
+    <script type="text/javascript">
+      window.configurator.init();
+    </script>
 </html>

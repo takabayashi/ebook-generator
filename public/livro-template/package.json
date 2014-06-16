@@ -1,4 +1,4 @@
-template_config : {
+{
 	template_name: 'Livro Do Aluno',
 	book_images_path: 'livros/1',
 	atachement_images_path: 'livros/2',
